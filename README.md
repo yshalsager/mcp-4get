@@ -2,6 +2,19 @@
 
 A [MCP server](https://modelcontextprotocol.io/introduction) that provides seamless access to the [4get Meta Search engine](https://4get.ca) API for LLM clients via [FastMCP](https://gofastmcp.com/).
 
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/2c9f817e8b934159bccbb6581ccaf4bf)](https://app.codacy.com/gh/yshalsager/mcp-4get/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
+[![PyPI version](https://badge.fury.io/py/mcp-4get.svg)](https://pypi.org/project/mcp-4get/)
+[![PyPI Downloads](https://static.pepy.tech/personalized-badge/mcp-4get?period=total\&units=international_system\&left_color=grey\&right_color=blue\&left_text=Total%20Downloads%20\(PyPI\))](https://pepy.tech/project/mcp-4get)
+
+[![GitHub release](https://img.shields.io/github/release/yshalsager/mcp-4get.svg)](https://github.com/yshalsager/mcp-4get/releases/)
+[![GitHub Downloads](https://img.shields.io/github/downloads/yshalsager/mcp-4get/total.svg)](https://github.com/yshalsager/mcp-4get/releases/latest)
+
+[![made-with-python](https://img.shields.io/badge/Made%20with-Python%203-3776AB?style=flat\&labelColor=3776AB\&logo=python\&logoColor=white\&link=https://www.python.org/)](https://www.python.org/)
+[![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)](https://github.com/ellerbrock/open-source-badges/)
+
+[![PayPal](https://img.shields.io/badge/PayPal-Donate-00457C?style=flat\&labelColor=00457C\&logo=PayPal\&logoColor=white\&link=https://www.paypal.me/yshalsager)](https://www.paypal.me/yshalsager)
+[![LiberaPay](https://img.shields.io/badge/Liberapay-Support-F6C915?style=flat\&labelColor=F6C915\&logo=Liberapay\&logoColor=white\&link=https://liberapay.com/yshalsager)](https://liberapay.com/yshalsager)
+
 ## ✨ Features
 
 - **🔍 Multi Search Functions**: Web, image, and news search with comprehensive result formatting
