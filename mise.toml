@@ -1,0 +1,14 @@
+[tools]
+"aqua:astral-sh/uv" = '0.8.22'
+"aqua:evilmartians/lefthook" = "1.13.4"
+python = '3.13'
+
+[tasks.dev]
+alias = "default"
+run = "uv run -m src"
+
+[tasks.pre-commit]
+run = "lefthook run pre-commit --all-files"
+
+[tasks.test]
+run = "uv run pytest"

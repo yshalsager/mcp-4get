@@ -1,0 +1,33 @@
+[project]
+dependencies = ["fastmcp>=2.12.3"]
+description = "An MCP server for 4get search engine"
+name = "mcp-4get"
+readme = "README.md"
+requires-python = ">=3.13"
+version = "0.1.0"
+
+[build-system]
+build-backend = "uv_build"
+requires = ["uv_build>=0.8.22,<0.9.0"]
+
+[tool.uv.build-backend]
+module-name = "src"
+module-root = ""
+
+[dependency-groups]
+dev = ["pytest>=8.3.0", "pytest-asyncio>=0.23.0", "ruff>=0.13.2"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py313"
+
+[tool.ruff.format]
+quote-style = "single"
+line-ending = "lf"
+
+[tool.pytest.ini_options]
+markers = [
+    "slow: marks tests as slow (deselect with '-m \"not slow\"')",
+    "integration: marks tests as integration tests that use real API",
+]
+asyncio_mode = "strict"
