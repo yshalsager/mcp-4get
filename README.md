@@ -88,7 +88,7 @@ export FOURGET_MAX_RETRIES="5"
 uv run -m mcp_4get
 ```
 
-### MCP Tool Integration
+### MCP Server Integration
 
 You can integrate the 4get MCP server with popular IDEs and AI assistants. Here are configuration examples:
 
@@ -100,13 +100,9 @@ Add this to your Cursor MCP configuration (`~/.cursor/mcp.json`):
 {
   "mcpServers": {
     "4get": {
-      "command": "uv",
+      "command": "uvx",
       "args": [
-        "run",
-        "--project",
-        "/path/to/your/mcp-4get",
-        "-m",
-        "src"
+        "mcp_4get"
       ],
       "env": {
         "FOURGET_BASE_URL": "https://4get.ca"
@@ -122,8 +118,8 @@ Add this to your Codex MCP configuration (`~/.codex/config.toml`):
 
 ```toml
 [mcp_servers.4get]
-command = "uv"
-args = ["run", "--project", "/path/to/your/mcp-4get", "-m", "src"]
+command = "uvx"
+args = ["mcp_4get"]
 env = { FOURGET_BASE_URL = "https://4get.ca" }
 ```
 
@@ -285,6 +281,45 @@ To set up the project with UV:
 
 1. Install UV using mise, or by following the instructions on the [official website](https://docs.astral.sh/uv/getting-started/installation/).
 2. Run `uv sync` to install project dependencies.
+
+### MCP Server Integration for local development
+
+#### Cursor IDE
+
+Add this to your Cursor MCP configuration (`~/.cursor/mcp.json`):
+
+```json
+{
+  "mcpServers": {
+    "4get": {
+      "command": "uv",
+      "args": [
+        "run",
+        "--project",
+        "/path/to/your/mcp-4get",
+        "-m",
+        "src"
+      ],
+      "env": {
+        "FOURGET_BASE_URL": "https://4get.ca"
+      }
+    }
+  }
+}
+```
+
+#### OpenAI Codex
+
+Add this to your Codex MCP configuration (`~/.codex/config.toml`):
+
+```toml
+[mcp_servers.4get]
+command = "uv"
+args = ["run", "--project", "/path/to/your/mcp-4get", "-m", "src"]
+env = { FOURGET_BASE_URL = "https://4get.ca" }
+```
+
+**Note**: Replace `/path/to/your/mcp-4get` with the actual path to your project directory.
 
 ## 🧪 Testing
 
