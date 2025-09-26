@@ -6,6 +6,9 @@ readme = "README.md"
 requires-python = ">=3.13"
 version = "0.1.0"
 
+[project.scripts]
+mcp_4get = "src.__main__:main"
+
 [build-system]
 build-backend = "uv_build"
 requires = ["uv_build>=0.8.22,<0.9.0"]
