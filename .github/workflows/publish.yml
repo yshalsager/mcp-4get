@@ -40,6 +40,8 @@ jobs:
         run: uv run --isolated --no-project --with pytest --with dist/*.tar.gz tests/test_server.py
       - name: Publish
         run: uv publish
+        env:
+          UV_PUBLISH_CHECK_URL: https://pypi.org/simple/
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
