@@ -102,7 +102,7 @@ Add this to your Cursor MCP configuration (`~/.cursor/mcp.json`):
     "4get": {
       "command": "uvx",
       "args": [
-        "mcp_4get"
+        "mcp_4get@latest"
       ],
       "env": {
         "FOURGET_BASE_URL": "https://4get.ca"
@@ -119,7 +119,7 @@ Add this to your Codex MCP configuration (`~/.codex/config.toml`):
 ```toml
 [mcp_servers.4get]
 command = "uvx"
-args = ["mcp_4get"]
+args = ["mcp_4get@latest"]
 env = { FOURGET_BASE_URL = "https://4get.ca" }
 ```
 
