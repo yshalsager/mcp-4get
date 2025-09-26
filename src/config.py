@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-import os
+from os import environ
 from dataclasses import dataclass
 from typing import TypeVar
 from urllib.parse import urlparse
@@ -79,17 +79,17 @@ class Config:
             ValueError: If any configuration value is invalid.
 
         Example:
-            >>> import os
-            >>> os.environ['FOURGET_TIMEOUT'] = '30.0'
-            >>> os.environ['FOURGET_MAX_RETRIES'] = '5'
+            >>> from os import environ
+            >>> environ['FOURGET_TIMEOUT'] = '30.0'
+            >>> environ['FOURGET_MAX_RETRIES'] = '5'
             >>> config = Config.from_env()
             >>> print(f"Timeout: {config.timeout}s, Retries: {config.max_retries}")
         """
 
-        base_url = os.environ.get('FOURGET_BASE_URL', DEFAULT_BASE_URL).rstrip('/')
-        pass_token = os.environ.get('FOURGET_PASS')
+        base_url = environ.get('FOURGET_BASE_URL', DEFAULT_BASE_URL).rstrip('/')
+        pass_token = environ.get('FOURGET_PASS')
 
-        user_agent = os.environ.get('FOURGET_USER_AGENT') or f'mcp-4get/{__version__}'
+        user_agent = environ.get('FOURGET_USER_AGENT') or f'mcp-4get/{__version__}'
 
         timeout = _read_number('FOURGET_TIMEOUT', float, DEFAULT_TIMEOUT_SECONDS)
         cache_ttl = _read_number('FOURGET_CACHE_TTL', float, DEFAULT_CACHE_TTL_SECONDS)
@@ -197,7 +197,7 @@ def _read_number(
     *,
     minimum: T | None = None,
 ) -> T:
-    raw = os.environ.get(name)
+    raw = environ.get(name)
     if not raw:
         return default
     try:
