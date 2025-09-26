@@ -10,3 +10,6 @@ wheels/
 .mise.local.toml
 .vscode/settings.json
 *.txt
+.coverage
+htmlcov/
+

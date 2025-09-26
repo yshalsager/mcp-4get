@@ -12,3 +12,6 @@ run = "lefthook run pre-commit --all-files"
 
 [tasks.test]
 run = "uv run pytest"
+
+[tasks.'test:coverage']
+run = "uv run pytest --cov=src"

@@ -15,7 +15,12 @@ module-name = "src"
 module-root = ""
 
 [dependency-groups]
-dev = ["pytest>=8.3.0", "pytest-asyncio>=0.23.0", "ruff>=0.13.2"]
+dev = [
+    "pytest>=8.3.0",
+    "pytest-asyncio>=0.23.0",
+    "pytest-cov>=7.0.0",
+    "ruff>=0.13.2",
+]
 
 [tool.ruff]
 line-length = 100
@@ -31,3 +36,6 @@ markers = [
     "integration: marks tests as integration tests that use real API",
 ]
 asyncio_mode = "strict"
+
+[tool.coverage.run]
+branch = true
