@@ -2,7 +2,7 @@
 
 A [MCP server](https://modelcontextprotocol.io/introduction) that provides seamless access to the [4get Meta Search engine](https://4get.ca) API for LLM clients via [FastMCP](https://gofastmcp.com/).
 
-[![Codacy Badge](https://app.codacy.com/project/badge/Grade/2c9f817e8b934159bccbb6581ccaf4bf)](https://app.codacy.com/gh/yshalsager/mcp-4get/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/2c9f817e8b934159bccbb6581ccaf4bf)](https://app.codacy.com/gh/yshalsager/mcp-4get/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade) [![Codacy Badge](https://app.codacy.com/project/badge/Coverage/2c9f817e8b934159bccbb6581ccaf4bf)](https://app.codacy.com/gh/yshalsager/mcp-4get/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_coverage)
 [![PyPI version](https://badge.fury.io/py/mcp-4get.svg)](https://pypi.org/project/mcp-4get/)
 [![PyPI Downloads](https://static.pepy.tech/personalized-badge/mcp-4get?period=total\&units=international_system\&left_color=grey\&right_color=blue\&left_text=Total%20Downloads%20\(PyPI\))](https://pepy.tech/project/mcp-4get)
 
@@ -24,6 +24,7 @@ A [MCP server](https://modelcontextprotocol.io/introduction) that provides seaml
 - **📊 Rich Responses**: Featured answers, related searches, pagination support, and more
 - **🧪 Well Tested**: Extensive test suite including integration tests with real API, unit tests, and more
 - **⚙️ Highly Configurable**: 11+ environment variables for fine-tuning
+- **🎯 Engine Shorthands**: Pick a 4get scraper via the `engine` parameter without memorizing query strings
 
 ## 📋 Requirements
 
@@ -135,6 +136,7 @@ fourget_web_search(
     query: str,
     page_token: str = None,        # Use 'npt' from previous response
     extended_search: bool = False, # Enable extended search mode
+    engine: str = None,             # Pick a scraper from the supported engine list
     extra_params: dict = None      # Language, region, etc.
 )
 ```
@@ -146,6 +148,7 @@ fourget_web_search(
 fourget_image_search(
     query: str,
     page_token: str = None,   # Use 'npt' from previous response
+    engine: str = None,       # Pick a scraper from the supported engine list
     extra_params: dict = None # Size, color, type filters
 )
 ```
@@ -157,11 +160,42 @@ fourget_image_search(
 fourget_news_search(
     query: str,
     page_token: str = None,   # Use 'npt' from previous response
+    engine: str = None,       # Pick a scraper from the supported engine list
     extra_params: dict = None # Date range, source filters
 )
 ```
 
 **Response includes**: `news[]`, `npt`
+
+#### Engine shorthands
+
+All MCP tools accept an optional `engine` argument that maps directly to the 4get `scraper` query parameter. This shorthand overrides any `scraper` value you may include in `extra_params`.
+
+| Value | Engine |
+| ----- | ------ |
+| `ddg` | DuckDuckGo |
+| `brave` | Brave |
+| `mullvad_brave` | Mullvad (Brave) |
+| `yandex` | Yandex |
+| `google` | Google |
+| `google_cse` | Google CSE |
+| `mullvad_google` | Mullvad (Google) |
+| `startpage` | Startpage |
+| `qwant` | Qwant |
+| `ghostery` | Ghostery |
+| `yep` | Yep |
+| `greppr` | Greppr |
+| `crowdview` | Crowdview |
+| `mwmbl` | Mwmbl |
+| `mojeek` | Mojeek |
+| `baidu` | Baidu |
+| `coccoc` | Coc Coc |
+| `solofield` | Solofield |
+| `marginalia` | Marginalia |
+| `wiby` | wiby |
+| `curlie` | Curlie |
+
+If you need to pass additional 4get query parameters (such as `country` or `language`), continue to supply them through `extra_params`.
 
 ### 📄 Pagination
 All tools support pagination via the `npt` (next page token):

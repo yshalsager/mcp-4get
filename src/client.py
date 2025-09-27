@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import asyncio
 import random
+from enum import Enum
 from typing import Any, Mapping
 
 import httpx
@@ -285,11 +286,16 @@ class FourGetClient:
 
     @staticmethod
     def _normalize_params(params: Mapping[str, Any]) -> dict[str, Any]:
-        return {
-            key: ('true' if value else 'false') if isinstance(value, bool) else value
-            for key, value in params.items()
-            if value is not None
-        }
+        normalized: dict[str, Any] = {}
+        for key, value in params.items():
+            if value is None:
+                continue
+            if isinstance(value, Enum):
+                value = value.value
+            if isinstance(value, bool):
+                value = 'true' if value else 'false'
+            normalized[key] = value
+        return normalized
 
     def _calculate_backoff_delay(self, attempt: int) -> float:
         """Calculate exponential backoff delay with jitter."""
