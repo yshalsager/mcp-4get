@@ -15,3 +15,22 @@ run = "uv run pytest"
 
 [tasks.'test:coverage']
 run = "uv run pytest --cov=src"
+
+[tasks.'version:bump']
+description = "Bump project version (override with --level=major|minor|patch|stable|alpha|beta|rc|post|dev)."
+run = '''
+#!/usr/bin/env bash
+set -euo pipefail
+
+level="{{option(name="level", default="patch")}}"
+new_version=$(uv version --bump "$level" --short)
+
+sed -i '' -E "s/(^[[:space:]]*__version__[[:space:]]*=[[:space:]]*')[^']+(')/\1${new_version}\2/" src/__init__.py
+
+if ! grep -q "__version__ = '${new_version}'" src/__init__.py; then
+  echo "Failed to update __version__ in src/__init__.py" >&2
+  exit 1
+fi
+
+echo "Bumped version to ${new_version}"
+'''
