@@ -4,7 +4,7 @@ description = "An MCP server for 4get search engine"
 name = "mcp-4get"
 readme = "README.md"
 requires-python = ">=3.13"
-version = "0.1.1"
+version = "0.1.2"
 
 [project.scripts]
 mcp_4get = "src.__main__:main"

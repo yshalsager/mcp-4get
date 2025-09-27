@@ -7,7 +7,7 @@ from importlib.metadata import PackageNotFoundError, version
 try:  # pragma: no cover - fallback only triggers when metadata missing
     __version__: str = version('mcp-4get')
 except PackageNotFoundError:  # pragma: no cover
-    __version__ = '0.1.1'
+    __version__ = '0.1.2'
 
 from .server import create_server  # noqa: E402
 from .client import FourGetClient  # noqa: E402
