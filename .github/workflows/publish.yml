@@ -28,7 +28,7 @@ jobs:
           restore-keys: |
             uv-${{ runner.os }}-${{ hashFiles('uv.lock') }}
             uv-${{ runner.os }}
-      - uses: jdx/mise-action@v3
+      - uses: jdx/mise-action@v5
         with:
           experimental: true
       - name: Build
