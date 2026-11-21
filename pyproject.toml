@@ -1,5 +1,5 @@
 [project]
-dependencies = ["fastmcp>=2.12.3,<4"]
+dependencies = ["fastmcp>=4.2.4,<5"]
 description = "An MCP server for 4get search engine"
 name = "mcp-4get"
 readme = "README.md"
